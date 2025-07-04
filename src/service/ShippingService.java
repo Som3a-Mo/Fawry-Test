@@ -10,11 +10,8 @@ public class ShippingService {
         if (items.isEmpty()) {
             return 0;
         }
-
         System.out.println("** Shipment notice **");
-
         double totalWeightGrams = 0;
-
         for (Shippable item : items.keySet()) {
             double quantity = items.get(item);
             double itemWeight = item.getWeight() * quantity;

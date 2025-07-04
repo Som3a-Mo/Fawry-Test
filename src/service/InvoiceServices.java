@@ -17,30 +17,25 @@ public class InvoiceServices {
     public static void checkout(Customer customer, Cart cart) {
         HashMap<Shippable, Double> toShip =  new HashMap<>();
         HashMap<Product, Double> toReceipt = new HashMap<>();
-
         for (CartProduct cp : cart.getProducts()) {
             Product p = inventory.getProduct(cp.getName());
             if (p == null) {
                 System.out.printf("model.Product '%s' not found%n", cp.getName());
                 continue;
             }
-
             if (p instanceof Expirable && ((Expirable)p).isExpired()) {
                 System.out.printf("model.Product '%s' is expired%n", cp.getName());
                 continue;
             }
-
             double quantity = cp.getQuantity();
             if (p.getQuantity() < quantity) {
                 System.out.printf("'%s' is out of stock%n", cp.getName());
                 continue;
             }
-
             if (p instanceof Shippable) {
                 toShip.put((Shippable)p, quantity);
             }
             toReceipt.put(p, quantity);
-
         }
         CheckoutReceipt(customer, toReceipt, toShip);
     }
