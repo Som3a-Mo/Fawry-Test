@@ -93,6 +93,11 @@ src/
     Shipping    110
     Amount      426
     ```
+
+### Screenshots 
+![image](https://github.com/user-attachments/assets/80266990-964f-45a9-b9de-982ce856cbc1)
+![image](https://github.com/user-attachments/assets/5e42c659-cf9d-4137-b392-92e6e0f2e31d)
+
 ## 🧩 How it Works
 - `InvoiceService.checkout(...)` loops through cart, performing:
     - Product existence check    
